@@ -16,8 +16,11 @@ public class TreeNode {
     }
 
     public String print(int level) {
-        String ret = null;
-        ret = "  ".repeat(level) + data + "\n";
-        return ret;
+        StringBuilder ret;
+        ret = new StringBuilder("  ".repeat(level) + data + " \n ");
+        for (TreeNode node: this.children) {
+            ret.append(node.print(level+1));
+        }
+        return ret.toString();
     }
 }
